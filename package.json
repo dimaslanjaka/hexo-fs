@@ -15,7 +15,8 @@
   },
   "scripts": {
     "prepublish ": "npm install && npm run clean && npm run build",
-    "build": "node build.js",
+    "build:dts": "tsc --emitDeclarationOnly --declaration",
+    "build": "node build.js && npm run build:dts",
     "clean": "npx --yes rimraf dist tmp && npm run build",
     "eslint": "eslint .",
     "pretest": "npm run build",
