@@ -3,21 +3,19 @@
   "version": "5.0.1",
   "description": "File system module for Hexo.",
   "type": "module",
-  "main": "dist/cjs/fs.js",
-  "module": "dist/esm/fs.js",
-  "types": "./dist/esm/fs.d.ts",
+  "main": "dist/fs.cjs",
+  "module": "dist/fs.js",
+  "types": "./dist/fs.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/esm/fs.js",
-      "require": "./dist/cjs/fs.js",
-      "types": "./dist/esm/fs.d.ts"
+      "import": "./dist/fs.js",
+      "require": "./dist/fs.cjs",
+      "types": "./dist/fs.d.ts"
     }
   },
   "scripts": {
     "prepublish ": "npm install && npm run clean && npm run build",
-    "build-cjs": "tsc -p tsconfig.cjs.json",
-    "build-esm": "tsc -p tsconfig.esm.json",
-    "build": "npm run build-cjs && npm run build-esm",
+    "build": "node build.js",
     "clean": "npx --yes rimraf dist tmp && npm run build",
     "eslint": "eslint .",
     "pretest": "npm run build",
@@ -55,10 +53,12 @@
     "binary-collections": "^2.0.10",
     "c8": "^10.1.3",
     "chai": "^4.3.6",
+    "esbuild-fix-imports-plugin": "^1.0.23",
     "eslint": "^9.37.0",
     "eslint-config-hexo": "^6.0.0",
     "mocha": "^11.0.1",
     "ts-node": "^10.9.1",
+    "tsup": "^8.5.1",
     "typescript": "^5.7.2"
   },
   "engines": {
